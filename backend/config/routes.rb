@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :game_players
   resources :guessed_words
   resources :rounds
   resources :players
