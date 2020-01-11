@@ -14,7 +14,6 @@ class GuessedWordsController < ApplicationController
     word = GuessedWord.new(guessed_word_params)
     ##### added for testing
       word.round = Round.first
-      word.player = Player.first
     #####
     if word.save
       render json: word
