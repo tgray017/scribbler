@@ -7,11 +7,21 @@
 </head>
 
 <body>
-  <script src="index.js" defer></script>
-  
   <main>
+    <h1>Scribbler</h1>
     <div id="game-container">
+      <form id="notepad">
+        <input type="text" id="new-word-content">
+      </form>
+      <div id="words-container">
+
+      </div>
     </div>
   </main>
+  <script src="src/adapters/WordsAdapter.js"></script>
+  <script src="src/components/word.js"></script>
+  <script src="src/components/words.js"></script>
+  <script src="src/components/app.js"></script>
+  <script src="src/index.js"></script>
 </body>
 </html>
