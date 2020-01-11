@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_195458) do
-
-  create_table "game_players", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "player_id"
-    t.integer "player_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_game_players_on_game_id"
-    t.index ["player_id"], name: "index_game_players_on_player_id"
-  end
+ActiveRecord::Schema.define(version: 2020_01_05_175625) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,19 +19,11 @@ ActiveRecord::Schema.define(version: 2020_01_05_195458) do
 
   create_table "guessed_words", force: :cascade do |t|
     t.integer "round_id"
-    t.integer "player_id"
     t.string "word"
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_guessed_words_on_player_id"
     t.index ["round_id"], name: "index_guessed_words_on_round_id"
-  end
-
-  create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "rounds", force: :cascade do |t|
