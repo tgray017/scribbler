@@ -10,6 +10,24 @@ class GuessedWordsController < ApplicationController
     render json: word
   end
 
-  
+  def create
+    word = GuessedWord.new(guessed_word_params)
+    ##### added for testing
+      word.round = Round.first
+      word.player = Player.first
+    #####
+    if word.save
+      render json: word
+    else
+      render json: word.errors.full_messages
+    end
+    #binding.pry
+  end
+
+  private
+
+    def guessed_word_params
+      params.require(:guessed_word).permit(:word, :points)
+    end
 
 end
