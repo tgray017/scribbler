@@ -1,23 +1,15 @@
-class WordsAdapter {
+class GamesAdapter {
   constructor() {
-    this.baseUrl = 'http://localhost:3000/guessed_words'
+    this.baseUrl = 'http://localhost:3000/games'
   }
 
-  getWords() {
-    return fetch(this.baseUrl).then(res => res.json())
-  }
-
-  createWord(word) {
+  createGame() {
     const configurationObject = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        "word": word,
-        "points": 5
-      })
+      }
     }
 
     return fetch(this.baseUrl, configurationObject)
