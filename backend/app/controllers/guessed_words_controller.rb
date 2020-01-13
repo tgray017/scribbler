@@ -1,7 +1,9 @@
 class GuessedWordsController < ApplicationController
 
   def index
-    words = GuessedWord.all
+    #binding.pry
+    round = Round.find(params[:round_id])
+    words = round.guessed_words
     render json: words
   end
 
@@ -12,9 +14,8 @@ class GuessedWordsController < ApplicationController
 
   def create
     word = GuessedWord.new(guessed_word_params)
-    ##### added for testing
-      word.round = Round.first
-    #####
+    word.round = Round.find(params[:round_id])
+
     if word.save
       render json: word
     else
