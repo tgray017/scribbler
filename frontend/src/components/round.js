@@ -1,10 +1,12 @@
 class Round {
   constructor(roundJSON) {
     this.adapter = new RoundsAdapter()
+    this.id = roundJSON.id
     this.gameId = roundJSON.game_id
     this.roundNumber = roundJSON.round_number
     this.firstLetter = roundJSON.first_letter
     this.lastLetter = roundJSON.last_letter
+
     //this.rules = `Words that start with '${this.firstLetter.toUpperCase()}' and end with '${this.lastLetter.toUpperCase()}'`
   }
 
@@ -14,6 +16,12 @@ class Round {
 
   rules() {
     return `Words that start with '${this.firstLetter.toUpperCase()}' and end with '${this.lastLetter.toUpperCase()}'`
+  }
+
+  begin() {
+    this.gameContainer = document.getElementById('game-container')
+    this.gameContainer.innerHTML = this.render()
+    this.words = new Words(this.id)
   }
 
   render() {

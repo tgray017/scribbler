@@ -1,7 +1,8 @@
 class Words {
-  constructor() {
+  constructor(roundId) {
     this.words = []
-    this.adapter = new WordsAdapter()
+    this.roundId = roundId
+    this.adapter = new WordsAdapter(this.roundId)
     this.initBindingsAndEventListeners()
     this.fetchAndLoadWords()
   }

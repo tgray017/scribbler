@@ -14,14 +14,9 @@ class Game {
     this.adapter.createGame()
     .then(game => {
       this.rounds = game.rounds.map(round => new Round(round))
-      this.beginRoundOne()
+      const roundOne = this.rounds.find(round => round.roundNumber === 1)
+      roundOne.begin()
     })
-  }
-
-  beginRoundOne() {
-    const round = this.rounds.find(round => round.roundNumber === 1)
-    const rules = round.rules()
-    this.gameContainer.innerHTML = round.render()
   }
 
 }

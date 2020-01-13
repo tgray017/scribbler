@@ -1,6 +1,7 @@
 class WordsAdapter {
-  constructor() {
-    this.baseUrl = 'http://localhost:3000/guessed_words'
+  constructor(roundId) {
+    this.roundId = roundId
+    this.baseUrl = `http://localhost:3000/rounds/${this.roundId}/guessed_words`
   }
 
   getWords() {
