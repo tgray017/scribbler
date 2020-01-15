@@ -22,30 +22,26 @@ class Words {
   submitWord(e) {
     e.preventDefault()
     const word = this.newWordContent.value
-    //if (isValidWord(this.newWordContent.value)) {
-      this.createWord(word)
-      // flash good
-      // fetchAndLoadWords
-    //} else {
-      // flash bad
-    //}
+    this.createWord(word)
   }
 
   createWord(word) {
+    this.newWordContent.value = ''
     this.adapter.createWord(word)
     .then(word => {
       this.words.push(new Word(word))
-      this.newWordContent.value = ''
       this.render()
     })
-  }
+    .catch(err => {
+      console.log(err);
+    }
+  )}
 
   fetchAndLoadWords() {
     this.adapter.getWords()
     .then(words => words.forEach(word => this.words.push(new Word(word))))
     .then(() => this.render())
   }
-
 
   render() {
     this.wordsContainer.innerHTML = this.words.map(word => word.renderDiv()).join('')
