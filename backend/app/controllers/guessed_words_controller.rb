@@ -21,18 +21,13 @@ class GuessedWordsController < ApplicationController
 
     if word.valid?
       if get_word(guessed_word_params[:word])
-        if word.save
-          render json: word
-        else
-          # I don't think this works
-          render json: { errors: word.errors.full_messages }
-        end
+        word.save
+        render json: word, status: :ok
       else
-        render json: { errors: word.errors.full_messages }
+        render json: { errors: word.errors.full_messages }, status: :bad_request
       end
     else
-      render json: { errors: word.errors.full_messages }
-      binding.pry
+      render json: { errors: word.errors.full_messages }, status: :bad_request
     end
   end
 
