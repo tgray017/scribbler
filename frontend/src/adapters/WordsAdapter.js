@@ -16,8 +16,7 @@ class WordsAdapter {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        "word": word,
-        "points": 5
+        "word": word
       })
     }
 
