@@ -21,7 +21,13 @@ class Round {
   begin() {
     this.gameContainer = document.getElementById('game-container')
     this.gameContainer.innerHTML = this.render()
+    this.timer = new Timer(this)
     this.words = new Words(this.id)
+    this.timer.start()
+  }
+
+  end() {
+    console.log('round ended')
   }
 
   render() {
@@ -29,6 +35,10 @@ class Round {
     <div id="rules-container">
       <h2>Can you name...</h2>
       <h3>${this.rules()}</h3>
+    </div>
+    <div id="timer-container">
+      <div id="timer"></div>
+      <button id="timer-forward">>></button>
     </div>
     <form id="notepad">
       <input type="text" id="new-word-content">
