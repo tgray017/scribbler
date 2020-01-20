@@ -1,6 +1,7 @@
 class Round {
-  constructor(roundJSON) {
+  constructor(roundJSON, gameObject) {
     this.adapter = new RoundsAdapter()
+    this.game = gameObject
     this.id = roundJSON.id
     this.gameId = roundJSON.game_id
     this.roundNumber = roundJSON.round_number
@@ -27,7 +28,30 @@ class Round {
   }
 
   end() {
-    console.log('round ended')
+    this.calculatePoints()
+    if (this.roundNumber < this.game.rounds.length) {
+      let nextRoundButton = document.createElement('button')
+      nextRoundButton.setAttribute("id", "next-round")
+      nextRoundButton.innerHTML = "Next Round"
+      let nextRoundNumber = this.roundNumber + 1
+      let nextRound = this.game.rounds.find(round => round.roundNumber === nextRoundNumber)
+
+      nextRoundButton.addEventListener('click', nextRound.begin.bind(nextRound))
+
+      this.gameContainer.appendChild(nextRoundButton)
+    } else {
+      this.game.end()
+    }
+  }
+
+  calculatePoints() {
+    let roundWords = this.words.words
+    if (roundWords.length === 0) {
+      this.points = 0
+    } else {
+      let pointsArray = roundWords.map(word => word.points)
+      this.points = pointsArray.reduce((acc, cv) => acc + cv)
+    }
   }
 
   render() {
@@ -45,6 +69,7 @@ class Round {
     </form>
     <div id="words-container">
 
-    </div>`
+    </div>
+    `
   }
 }

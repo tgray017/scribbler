@@ -28,12 +28,12 @@ class Timer {
 
   end() {
     clearInterval(this.interval)
-    this.hideForwardButton()
+    this.disableForwardButton()
     this.round.end()
   }
 
-  hideForwardButton() {
-    this.forwardButton.hidden = true
+  disableForwardButton() {
+    this.forwardButton.disabled = true
   }
 
   render() {
