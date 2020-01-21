@@ -72,4 +72,11 @@ class Round {
     </div>
     `
   }
+
+  renderSummary() {
+   return `
+    <h3>Round ${this.roundNumber}</h3>
+    ${this.words.words.map(word => word.renderDiv()).join('')}
+   `
+  }
 }
