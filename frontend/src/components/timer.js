@@ -16,27 +16,27 @@ class Timer {
     this.interval = setInterval(this.countDown.bind(this), 1000)
   }
 
-  countDown() {
-    (this.time <= 0) ? this.end() : this.time -= 1
-    this.timer.innerHTML = this.render()
-  }
-
-  forward() {
-    (this.time <= 5) ? this.time = 0 : this.time -= 5
-    this.timer.innerHTML = this.render()
-  }
-
   end() {
     clearInterval(this.interval)
     this.disableForwardButton()
     this.round.end()
   }
 
+  countDown() {
+    (this.time <= 0) ? this.end() : this.time -= 1
+    this.timer.innerHTML = this.renderTimer()
+  }
+
+  forward() {
+    (this.time <= 5) ? this.time = 0 : this.time -= 5
+    this.timer.innerHTML = this.renderTimer()
+  }
+
   disableForwardButton() {
     this.forwardButton.disabled = true
   }
 
-  render() {
+  renderTimer() {
     return `00:${('0' + this.time).slice(-2)}`
   }
 }

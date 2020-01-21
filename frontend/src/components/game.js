@@ -15,7 +15,7 @@ class Game {
     .then(game => {
       this.rounds = game.rounds.map(round => new Round(round, this))
       const roundOne = this.rounds.find(round => round.roundNumber === 1)
-      roundOne.begin()
+      roundOne.start()
     })
   }
 
@@ -25,12 +25,9 @@ class Game {
     this.displayRoundsSummary()
   }
 
-  renderSummary() {
-    return `
-      <h2>You earned ${this.totalPoints} points!</h2>
-      <div id=rounds-summary-container></div>
-      <button onClick="window.location.reload();">New Game</button>
-    `
+  calculatePoints() {
+    const gamePoints = this.rounds.map(round => round.points)
+    this.totalPoints = gamePoints.reduce((acc, cv) => acc + cv)
   }
 
   displayGameSummary() {
@@ -43,9 +40,11 @@ class Game {
     this.roundsSummaryContainer.innerHTML = roundSummaries.join('')
   }
 
-  calculatePoints() {
-    const gamePoints = this.rounds.map(round => round.points)
-    this.totalPoints = gamePoints.reduce((acc, cv) => acc + cv)
+  renderSummary() {
+    return `
+      <h2>You earned ${this.totalPoints} points!</h2>
+      <div id=rounds-summary-container></div>
+      <button onClick="window.location.reload();">New Game</button>
+    `
   }
-
 }

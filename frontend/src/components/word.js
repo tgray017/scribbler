@@ -5,7 +5,7 @@ class Word {
     this.points = wordJSON.points
   }
 
-  renderDiv() {
+  renderWord() {
     return `
       <div id='word-${this.id}'>
         <div class='word-body'>${this.word}</div>

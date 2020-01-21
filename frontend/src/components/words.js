@@ -30,7 +30,7 @@ class Words {
     this.adapter.createWord(word)
     .then(word => {
       this.words.push(new Word(word))
-      this.render()
+      this.displayWords()
     })
     .catch(err => {
       console.log(err);
@@ -40,10 +40,10 @@ class Words {
   fetchAndLoadWords() {
     this.adapter.getWords()
     .then(words => words.forEach(word => this.words.push(new Word(word))))
-    .then(() => this.render())
+    .then(() => this.displayWords())
   }
 
-  render() {
-    this.wordsContainer.innerHTML = this.words.map(word => word.renderDiv()).join('')
+  displayWords() {
+    this.wordsContainer.innerHTML = this.words.map(word => word.renderWord()).join('')
   }
 }
