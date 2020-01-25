@@ -22,10 +22,13 @@ class WordsAdapter {
 
     return fetch(this.baseUrl, configurationObject)
     .then(resp => {
-      if (resp.ok) {
-        return resp.json()
+      return resp.json()
+    })
+    .then(json => {
+      if (json.errors) {
+        throw new Error (json.errors)
       } else {
-        throw new Error('Invalid word')
+        return json
       }
     })
   }

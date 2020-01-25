@@ -26,7 +26,7 @@ class GuessedWordsController < ApplicationController
         word_record.save
         render json: word_record, status: :ok
       else
-        render json: { errors: word_record.errors.full_messages }, status: :bad_request
+        render json: { errors: "Word doesn't exist".to_json }, status: :bad_request
       end
     else
       render json: { errors: word_record.errors.full_messages }, status: :bad_request

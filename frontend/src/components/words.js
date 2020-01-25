@@ -33,9 +33,35 @@ class Words {
       this.displayWords()
     })
     .catch(err => {
-      console.log(err);
+      if (err.message === "Word must be unique for the current round") {
+        this.flashScreen('orange')
+      } else {
+        this.flashScreen('red')
+      }
+      console.log(err.message)
     }
   )}
+
+  flashScreen(color) {
+    this.addFlash(color)
+    setTimeout(this.removeFlash, 100, color)
+  }
+
+  addFlash(color) {
+    let body = document.getElementsByTagName("body")[0]
+    let main = document.getElementsByTagName("main")[0]
+
+    body.setAttribute("class", `flash-${color}`)
+    main.setAttribute("class", "move-back")
+  }
+
+  removeFlash(color) {
+    let body = document.getElementsByTagName("body")[0]
+    let main = document.getElementsByTagName("main")[0]
+
+    body.classList.remove(`flash-${color}`)
+    main.classList.remove("move-back")
+  }
 
   fetchAndLoadWords() {
     this.adapter.getWords()

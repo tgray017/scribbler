@@ -39,3 +39,15 @@ body {
 .red {
   color: red;
 }
+
+.move-back {
+  opacity: 0;
+}
+
+.flash-red {
+  background-color: rgb(248, 56, 63);
+}
+
+.flash-orange {
+  background-color: rgb(248, 135, 41);
+}
