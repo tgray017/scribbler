@@ -25,18 +25,29 @@ class Timer {
   countDown() {
     (this.time <= 0) ? this.end() : this.time -= 1
     this.timer.innerHTML = this.renderTimer()
+    if (this.time <= 5) {
+      this.makeRed()
+    }
   }
 
   forward() {
     (this.time <= 5) ? this.time = 0 : this.time -= 5
     this.timer.innerHTML = this.renderTimer()
+    if (this.time <= 5) {
+      this.makeRed()
+    }
   }
 
   disableForwardButton() {
     this.forwardButton.disabled = true
   }
 
+  makeRed() {
+    this.timer.setAttribute('class', 'red')
+  }
+
   renderTimer() {
     return `00:${('0' + this.time).slice(-2)}`
   }
+
 }

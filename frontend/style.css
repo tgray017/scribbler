@@ -27,3 +27,15 @@ body {
 [id$="-container"], form {
   margin: 1rem 0 1rem 0;
 }
+
+#timer {
+  width: 5rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  font-size: 1.25rem;
+  height: 2rem;
+}
+
+.red {
+  color: red;
+}

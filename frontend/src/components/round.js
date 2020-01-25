@@ -55,9 +55,9 @@ class Round {
       <h2>Can you name...</h2>
       <h3>${this.renderRules()}</h3>
     </div>
-    <div id="timer-container">
+    <div id="timer-container" class="container d-flex">
       <div id="timer"></div>
-      <button id="timer-forward">>></button>
+      <button id="timer-forward" class="btn btn-sm btn-outline-dark">>></button>
     </div>
     <form id="notepad">
       <input type="text" id="new-word-content" class="form-control border-0">
