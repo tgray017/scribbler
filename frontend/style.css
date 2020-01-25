@@ -1,0 +1,29 @@
+body {
+  padding-top: 56px;
+  background-color: rgba(143, 207, 212, 0.5);
+  color: rgb(52, 58, 64);
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 0.5rem;
+}
+
+.card {
+  display: inline-block;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.word-points, .word-body {
+  text-align: center;
+}
+
+.start-game {
+  align: center;
+}
+
+[id$="-container"], form {
+  margin: 1rem 0 1rem 0;
+}

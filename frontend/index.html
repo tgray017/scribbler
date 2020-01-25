@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>Scribbler</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
   <main>
-    <h1>Scribbler</h1>
-    <div id="game-container">
-      <button type="button" id="start-game">Start Game</button>
+    <div class="container">
+      <h1>Scribbler</h1>
+      <div id="game-container">
+        <button class="btn btn-xl btn-outline-dark" type="button" id="start-game">Start Game</button>
+      </div>
     </div>
   </main>
   <script src="src/components/timer.js"></script>

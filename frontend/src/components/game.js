@@ -44,7 +44,7 @@ class Game {
     return `
       <h2>You earned ${this.totalPoints} points!</h2>
       <div id=rounds-summary-container></div>
-      <button onClick="window.location.reload();">New Game</button>
+      <button class="btn btn-xl btn-outline-dark" onClick="window.location.reload();">New Game</button>
     `
   }
 }

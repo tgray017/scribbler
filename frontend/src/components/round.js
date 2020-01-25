@@ -15,6 +15,7 @@ class Round {
   }
 
   end() {
+    this.disableNotepad()
     this.calculatePoints()
     if (this.roundNumber < this.game.rounds.length) {
       const button = this.createNextRoundButton()
@@ -24,6 +25,10 @@ class Round {
     } else {
       this.game.end()
     }
+  }
+
+  disableNotepad() {
+    this.words.newWordContent.disabled = true
   }
 
   calculatePoints() {
@@ -39,6 +44,7 @@ class Round {
   createNextRoundButton() {
     const nextRoundButton = document.createElement('button')
     nextRoundButton.setAttribute("id", "next-round")
+    nextRoundButton.setAttribute("class", "btn btn-xl btn-outline-dark")
     nextRoundButton.innerHTML = "Next Round"
     return nextRoundButton
   }
@@ -54,7 +60,7 @@ class Round {
       <button id="timer-forward">>></button>
     </div>
     <form id="notepad">
-      <input type="text" id="new-word-content">
+      <input type="text" id="new-word-content" class="form-control border-0">
     </form>
     <div id="words-container">
 
