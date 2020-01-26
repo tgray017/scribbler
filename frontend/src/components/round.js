@@ -60,7 +60,7 @@ class Round {
       <button id="timer-forward" class="btn btn-sm btn-outline-dark">>></button>
     </div>
     <form id="notepad">
-      <input type="text" id="new-word-content" class="form-control border-0">
+      <input type="text" id="new-word-content" class="form-control border-0" placeholder="Start typing!">
     </form>
     <div id="words-container">
 
