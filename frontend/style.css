@@ -41,13 +41,13 @@ body {
 }
 
 .move-back {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 .flash-red {
-  background-color: rgb(248, 56, 63);
+  background-color: rgb(255, 96, 112);
 }
 
 .flash-orange {
-  background-color: rgb(248, 135, 41);
+  background-color: rgb(255, 122, 73);
 }
