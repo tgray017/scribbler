@@ -23,6 +23,15 @@ class Game {
     this.calculatePoints()
     this.displayGameSummary()
     this.displayRoundsSummary()
+    this.showWordDefinitionsOnHover()
+  }
+
+  showWordDefinitionsOnHover() {
+    this.rounds.forEach(round => {
+      round.words.words.forEach(word => {
+        word.showWordDefinitionOnHover()
+      })
+    })
   }
 
   calculatePoints() {

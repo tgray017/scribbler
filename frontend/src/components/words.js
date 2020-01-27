@@ -71,6 +71,6 @@ class Words {
 
   displayWords() {
     this.wordsContainer.innerHTML = this.words.map(word => word.renderWord()).join('')
-    this.words.forEach(word => word.initModalOnHover())
+    this.words.forEach(word => word.showWordDefinitionOnHover())
   }
 }

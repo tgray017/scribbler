@@ -6,9 +6,8 @@ class Word {
     this.definition = "hello"
   }
 
-  initModalOnHover() {
-    console.log('inside the modal function')
-
+  showWordDefinitionOnHover() {
+    // need JQuery here to take advantage of Bootstrap JS
     $(function () {
       $('[data-toggle="popover"]').popover()
     })
