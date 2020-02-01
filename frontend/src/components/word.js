@@ -3,7 +3,7 @@ class Word {
     this.word = wordJSON.word
     this.id = wordJSON.id
     this.points = wordJSON.points
-    this.definition = "hello"
+    this.definitions = wordJSON.definition
   }
 
   showWordDefinitionOnHover() {
@@ -24,11 +24,24 @@ class Word {
   renderWord() {
     return `
       <div class="card border-0 shadow mb-4">
-        <div id='word-${this.id}' class="card-body" data-toggle="popover" title=${this.word} data-content=${this.definition} data-placement="bottom">
+        <div id='word-${this.id}' class="card-body" data-toggle="popover" data-placement="bottom" title="${this.word}" data-content="${this.renderDefinitions()}" data-html="true">
           <div class='word-body'>${this.word}</div>
           <div class='word-points'>${this.points}</div>
         </div>
       </div>
     `
   }
+
+  renderDefinitions() {
+    let div = document.createElement('div')
+    let ul = document.createElement('ul')
+    this.definitions.map(def => {
+      let li = document.createElement('li')
+      li.innerHTML = def
+      ul.appendChild(li)
+    })
+    div.appendChild(ul)
+    return div.innerHTML
+  }
+  
 }
