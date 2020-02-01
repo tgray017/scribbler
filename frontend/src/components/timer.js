@@ -1,6 +1,6 @@
 class Timer {
   constructor(round) {
-    this.time = 31
+    this.time = 60
     this.round = round
     this.initBindingsAndEventListeners()
   }

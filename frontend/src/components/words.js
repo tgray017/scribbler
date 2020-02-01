@@ -27,7 +27,7 @@ class Words {
 
   createWord(word) {
     this.newWordContent.value = ''
-    this.adapter.createWord(word)
+    this.adapter.createWord(word.toLowerCase())
     .then(word => {
       this.words.push(new Word(word))
       this.displayWords()
