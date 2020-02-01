@@ -4,6 +4,7 @@ class CreateGuessedWords < ActiveRecord::Migration[5.2]
       t.references :round, foreign_key: true
       t.string :word
       t.integer :points
+      t.string :definition
 
       t.timestamps
     end

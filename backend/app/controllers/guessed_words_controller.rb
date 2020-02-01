@@ -21,7 +21,7 @@ class GuessedWordsController < ApplicationController
     word_record.round = Round.find(params[:round_id])
 
     if word_record.valid?
-      if get_word(word_record.word)
+      if word_record.definition = get_word(word_record.word)
         word_record.points = score(word_record.word)
         word_record.save
         render json: word_record, status: :ok
@@ -42,7 +42,9 @@ class GuessedWordsController < ApplicationController
     def get_word(word)
       uri = URI("http://dictionaryapi.com/api/v3/references/collegiate/json/#{word}?key=#{ENV['DICTIONARY_API_KEY']}")
       response = JSON.parse(Net::HTTP.get(uri))
-      response.first["meta"] ? true : false
+      (response.first["meta"] && response.first["fl"] != "abbreviation") ? response.first["shortdef"] : false
     end
+
+
 
 end

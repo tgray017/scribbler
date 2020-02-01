@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_175625) do
     t.integer "round_id"
     t.string "word"
     t.integer "points"
+    t.string "definition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["round_id"], name: "index_guessed_words_on_round_id"
