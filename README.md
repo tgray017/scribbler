@@ -5,9 +5,11 @@ This application runs on Ruby 2.6.1.
 
 ## Installation
 1. Clone this repo
-2. Run `bundle install` to install any dependencies.
-3. Run `rails db:migrate` to set up the database.
-4. Run `rails s` and navigate to the newly spun-up web server in your browser.
+2. `cd` to `scribbler/backend/`
+3. Run `bundle install` to install any dependencies
+4. Run `rails db:migrate` to set up the database
+5. Run `rails s` to start the Rails server
+6. Run `open ../frontend/index.html` to open the webpage in your browser
 
 ## Contributing
 If you see an opportunity for improvement go ahead and use a typical git workflow to make it happen:
