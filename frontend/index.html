@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
   <title>Scribbler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 </head>
@@ -12,6 +13,17 @@
     <div class="container">
       <h1>Scribbler</h1>
       <div id="game-container">
+        <div id="game-rules">
+          <h2>Rules</h2>
+          <ol>
+            <li>Words must start and end with the letters provided.</li>
+            <li>Words must contain at least 3 letters.</li>
+            <li>No names or abbreviations allowed.</li>
+            <li>No stems of base words (e.g. "limes" is invalid as its base word is "lime"; "hoarded" is invalid as its base word is "hoard").</li>
+            <li>Scrabble rules! Each letter has a point value associated with it--the more uncommon the letter (e.g. "z" and "q"), the more points you'll get!</li>
+            <li>If you can't think of a word, just guess! There are no penalties for guessing incorrectly, and <b>if you happen to guess a word that exists, you might learn something</b>.</li>
+          </ol>
+        </div>
         <button class="btn btn-xl btn-outline-dark" type="button" id="start-game">Start Game</button>
       </div>
     </div>
