@@ -1,9 +1,6 @@
 class GuessedWordsController < ApplicationController
-  require 'open-uri'
-  require 'net/http'
-  require 'json'
 
-  include WordsHelper
+  include GuessedWordsHelper
 
   def index
     round = Round.find(params[:round_id])
@@ -37,39 +34,6 @@ class GuessedWordsController < ApplicationController
 
     def guessed_word_params
       params.require(:guessed_word).permit(:word)
-    end
-
-    def get_word(word)
-      uri = URI("http://dictionaryapi.com/api/v3/references/collegiate/json/#{word}?key=#{ENV['DICTIONARY_API_KEY']}")
-      response = JSON.parse(Net::HTTP.get(uri))
-      if valid_word?(response)
-        definitions = get_definitions(response, word)
-        definitions if definitions.keys.size > 0 #? definitions : false
-      end
-    end
-
-    def valid_word?(response)
-      response.first.instance_of? Hash
-    end
-
-    def get_definitions(response, word)
-      definitions = {}
-
-      valid_definitions = response.select {|definition| definition["fl"] != "abbreviation" && definition["fl"] != "biographical name" && definition["hwi"]["hw"].gsub("\*","") == word}
-
-      valid_definitions.collect do |definition|
-        unless definitions.keys.include?(definition["fl"])
-          definitions[definition["fl"]] = []
-        end
-      end
-
-      valid_definitions.collect do |definition|
-        definition["shortdef"].collect do |short_def|
-          definitions[definition["fl"]].push(short_def)
-        end
-      end
-
-      definitions
     end
 
 end
