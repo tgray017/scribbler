@@ -75,7 +75,11 @@ class Round {
   renderSummary() {
    return `
     <h3>Round ${this.roundNumber}</h3>
-    ${this.words.words.map(word => word.renderWord()).join('')}
+    ${this.renderSummaryWords()}
    `
+  }
+
+  renderSummaryWords() {
+    return (this.words.words.length === 0) ? "<p>You guessed no words this round!</p>" : this.words.words.map(word => word.renderWord()).join('')
   }
 }

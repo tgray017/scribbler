@@ -9,15 +9,12 @@ class Word {
   showWordDefinitionOnHover() {
     // need JQuery here to take advantage of Bootstrap JS
     $(function () {
-      $('[data-toggle="popover"]').popover()
-    })
-
-    $(`#word-${this.id}`).on('mouseenter', function() {
-      $(this).popover('show')
-    })
-
-    $(`#word-${this.id}`).on('mouseleave', function() {
-      $(this).popover('hide')
+      $('[data-toggle="popover"]').popover({
+        placement : 'auto',
+        trigger : 'hover',
+        container : 'body',
+        boundary : 'window'
+      })
     })
   }
 
@@ -33,15 +30,24 @@ class Word {
   }
 
   renderDefinitions() {
-    let div = document.createElement('div')
-    let ul = document.createElement('ul')
-    this.definitions.map(def => {
-      let li = document.createElement('li')
-      li.innerHTML = def
-      ul.appendChild(li)
-    })
-    div.appendChild(ul)
-    return div.innerHTML
+    let outerDiv = document.createElement('div')
+
+    for (let partOfSpeech of Object.keys(this.definitions)) {
+      let innerDiv = document.createElement('div')
+      innerDiv.innerHTML = `<i>${partOfSpeech}</i>`
+
+      let ul = document.createElement('ul')
+      for (let definition of this.definitions[`${partOfSpeech}`]) {
+        let li = document.createElement('li')
+        li.innerHTML = definition
+        ul.appendChild(li)
+      }
+
+      innerDiv.appendChild(ul)
+      outerDiv.appendChild(innerDiv)
+    }
+
+    return outerDiv.innerHTML
   }
-  
+
 }

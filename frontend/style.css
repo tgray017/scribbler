@@ -51,3 +51,7 @@ body {
 .flash-orange {
   background-color: rgb(255, 122, 73);
 }
+
+#game-rules {
+  width: 75%;
+}
