@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.adapter = new GamesAdapter()
+    this.alphabetize = false
     this.initBindingsAndEventListeners()
   }
 
@@ -41,6 +42,35 @@ class Game {
 
   displayGameSummary() {
     this.gameContainer.innerHTML = this.renderSummary()
+    let button = document.getElementById('alphabetize')
+    button.addEventListener('click', this.displayAlphabetizedWords.bind(this))
+  }
+
+  displayAlphabetizedWords() {
+    this.alphabetize = true
+    this.displayRoundsSummary()
+    this.showWordDefinitionsOnHover()
+//    let url = `http://localhost:3000/rounds/271/guessed_words`
+//    let wordsArr
+
+//    fetch(url)
+//    .then(resp => resp.json())
+//    .then(words => {
+//      wordsArr = words
+
+//      wordsArr.sort(function (a, b) {
+//        let comparison
+//        if (a.word > b.word) {
+//          comparison = 1
+//        } else {
+//          comparison = -1
+//        }
+//        return comparison
+//      })
+
+//      this.wordsArr = wordsArr
+//      console.log(this.wordsArr)
+//    })
   }
 
   displayRoundsSummary() {
@@ -52,6 +82,7 @@ class Game {
   renderSummary() {
     return `
       <h2>You earned ${this.totalPoints} points!</h2>
+      <button id="alphabetize">Alphabetize!</button>
       <div id=rounds-summary-container></div>
       <button class="btn btn-xl btn-outline-dark" onClick="window.location.reload();">New Game</button>
     `

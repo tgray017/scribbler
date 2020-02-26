@@ -80,6 +80,26 @@ class Round {
   }
 
   renderSummaryWords() {
-    return (this.words.words.length === 0) ? "<p>You guessed no words this round!</p>" : this.words.words.map(word => word.renderWord()).join('')
+    if (this.words.words.length === 0) {
+      return "<p>You guessed no words this round!</p>"
+    } else {
+      let wordsArr = this.words.words
+
+      if (this.game.alphabetize) {
+        wordsArr.sort(function (a, b) {
+          let comparison
+          if (a.word > b.word) {
+            comparison = 1
+          } else {
+            comparison = -1
+          }
+          return comparison
+        })
+      }
+
+      return wordsArr.map(word => word.renderWord()).join('')
+    }
   }
+
+
 }
